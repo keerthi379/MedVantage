@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: LemonChiffon;
+        }
+
+        header {
+            background-color: teal;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            background-color: darkcyan;
+            overflow: hidden;
+            padding-left: 38%; 
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            align-items: center;
+        }
+
+        nav a:hover{
+            /* background-color: black; */
+            color: black;
+        }
+
+        .loginForm {
+            display: none;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 15px;
+            background-color: lightyellow;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .registerLink {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+         .aboutUs {
+            float: right;
+            padding: 14px 16px;
+            text-align: right;
+        }
+
+        footer {
+            background-color: darkcyan;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Login </h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showLoginForm('patientForm')">
+            <svg class="svg-inline--fa fa-user-graduate fa-8x reg-ico" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-graduate" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" data-fa-i2svg="" color="aliceblue">
+                                <path fill="currentColor" d="M48 0C21.5 0 0 21.5 0 48V256H144c8.8 0 16 7.2 16 16s-7.2 16-16 16H0v64H144c8.8 0 16 7.2 16 16s-7.2 16-16 16H0v80c0 26.5 21.5 48 48 48H265.9c-6.3-10.2-9.9-22.2-9.9-35.1c0-46.9 25.8-87.8 64-109.2V271.8 48c0-26.5-21.5-48-48-48H48zM152 64h16c8.8 0 16 7.2 16 16v24h24c8.8 0 16 7.2 16 16v16c0 8.8-7.2 16-16 16H184v24c0 8.8-7.2 16-16 16H152c-8.8 0-16-7.2-16-16V152H112c-8.8 0-16-7.2-16-16V120c0-8.8 7.2-16 16-16h24V80c0-8.8 7.2-16 16-16zM512 272a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM288 477.1c0 19.3 15.6 34.9 34.9 34.9H541.1c19.3 0 34.9-15.6 34.9-34.9c0-51.4-41.7-93.1-93.1-93.1H381.1c-51.4 0-93.1 41.7-93.1 93.1z"></path>
+                            </svg>  <span> Patient Login </span> </a>
+        
+        <a href="#" onclick="showLoginForm('doctorForm')">
+            <svg class="svg-inline--fa fa-building-columns reg-ico" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="building-columns" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" data-fa-i2svg="" color="aliceblue">
+                                <path fill="currentColor" d="M142.4 21.9c5.6 16.8-3.5 34.9-20.2 40.5L96 71.1V192c0 53 43 96 96 96s96-43 96-96V71.1l-26.1-8.7c-16.8-5.6-25.8-23.7-20.2-40.5s23.7-25.8 40.5-20.2l26.1 8.7C334.4 19.1 352 43.5 352 71.1V192c0 77.2-54.6 141.6-127.3 156.7C231 404.6 278.4 448 336 448c61.9 0 112-50.1 112-112V265.3c-28.3-12.3-48-40.5-48-73.3c0-44.2 35.8-80 80-80s80 35.8 80 80c0 32.8-19.7 61-48 73.3V336c0 97.2-78.8 176-176 176c-92.9 0-168.9-71.9-175.5-163.1C87.2 334.2 32 269.6 32 192V71.1c0-27.5 17.6-52 43.8-60.7l26.1-8.7c16.8-5.6 34.9 3.5 40.5 20.2zM480 224a32 32 0 1 0 0-64 32 32 0 1 0 0 64z"></path>
+                            </svg> <span> Doctor Login </span> </a>
+
+        <a href="#" onclick="showLoginForm('adminForm')">
+            <svg class="svg-inline--fa fa-city reg-ico" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="city" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" data-fa-i2svg="" color="aliceblue">
+                                <path fill="currentColor" d="M96 128a128 128 0 1 0 256 0A128 128 0 1 0 96 128zm94.5 200.2l18.6 31L175.8 483.1l-36-146.9c-2-8.1-9.8-13.4-17.9-11.3C51.9 342.4 0 405.8 0 481.3c0 17 13.8 30.7 30.7 30.7H162.5c0 0 0 0 .1 0H168 280h5.5c0 0 0 0 .1 0H417.3c17 0 30.7-13.8 30.7-30.7c0-75.5-51.9-138.9-121.9-156.4c-8.1-2-15.9 3.3-17.9 11.3l-36 146.9L238.9 359.2l18.6-31c6.4-10.7-1.3-24.2-13.7-24.2H224 204.3c-12.4 0-20.1 13.6-13.7 24.2z"></path>
+                            </svg> <span> Admin Login </span> </a>
+        <div class="aboutUs">
+            <a href="C:\Users\sunda\OneDrive\Desktop\SEM 5\WAD\WAD Project Clutter\MedVantage\About.html">About Us</a>
+        </div>
+
+    </nav>
+
+    <div id="patientForm" class="loginForm">
+        <h2>Patient Login</h2>
+        <form>
+            <label for="patientUsername">Username or Email:</label>
+            <input type="text" id="patientUsername" name="patientUsername" placeholder="Enter Username or Email..." required>
+            <label for="patientPassword">Password:</label>
+            <input type="password" id="patientPassword" name="patientPassword" placeholder="Enter Password..."required>
+            <button type="submit" onclick="validateLogin()">Login</button>
+        </form>
+        <div class="registerLink">
+            <p>New user? <a href="C:\Users\sunda\OneDrive\Desktop\SEM 5\WAD\WAD Project Clutter\MedVantage\Register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <div id="doctorForm" class="loginForm">
+        <h2>Doctor Login</h2>
+        <form>
+            <label for="doctorUsername">Doc-ID:</label>
+            <input type="text" id="doctorUsername" name="doctorUsername" placeholder="Enter Doctor-ID..." required>
+            <label for="doctorPassword">Password:</label>
+            <input type="password" id="doctorPassword" name="doctorPassword" placeholder="Enter Password..."required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="adminForm" class="loginForm">
+        <h2>Admin Login</h2>
+        <form>
+            <label for="adminUsername">Admin-ID:</label>
+            <input type="text" id="adminUsername" name="adminUsername" placeholder="Enter Admin-ID..."required>
+            <label for="adminPassword">Password:</label>
+            <input type="password" id="adminPassword" name="adminPassword" placeholder="Enter Password..." required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function showLoginForm(formId) {
+            // Hide all login forms
+            document.querySelectorAll('.loginForm').forEach(form => {
+                form.style.display = 'none';
+            });
+
+            // Show the selected login form
+            document.getElementById(formId).style.display = 'block';
+        }
+
+
+        function validateLogin(){
+            var button = document.getElementById(".patientForm");
+                button.addEventListener('click',(e)=>{
+            e.preventDefault();
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+            var username= document.getElementById("username");
+            var password= document.getElementById("password");
+            console.log(username.value.length,username.value.trim().length);
+            if(username.value.trim().length<6){
+                alert("Username must contain more than 6 charcters");
+                return;
+            }
+            if(password.value.trim().length<6){
+                alert("Password must contain more than 6 charcters");
+                return;
+            }else{
+                window.location.href="./PatDash.html"
+            }
+        })
+        }
+    </script>
+
+</body>
+
+    <footer>
+       Keerthi &copy; All rights reserved.
+    </footer>
+</html>
